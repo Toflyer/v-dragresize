@@ -1,13 +1,13 @@
 {
   "name": "v-dragresize",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "In vue, you can easily drag and change the layout of elements",
   "main": "dist/cjs/index.js",
   "module": "dist/em/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "create": "vue create playground",
-    "build": "rollup --config"
+    "build": "rollup --config",
+    "buildAndPublish": "npm run build && npm publish"
   },
   "keywords": [
     "vue",
@@ -34,6 +34,7 @@
     "@rollup/plugin-json": "^6.0.0",
     "@rollup/plugin-terser": "^0.4.3",
     "@vue/cli": "^5.0.8",
-    "rollup": "^3.25.1"
+    "rollup": "^3.25.1",
+    "rollup-plugin-delete": "^2.0.0"
   }
 }

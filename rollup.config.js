@@ -2,6 +2,7 @@
 const packageJson = require("./package.json");
 const babel = require("@rollup/plugin-babel");
 const terser = require('@rollup/plugin-terser');
+const del = require('rollup-plugin-delete');
 
 let plugins = [
     babel({
@@ -14,17 +15,27 @@ module.exports = [
     {
         input: "src/index.js",
         output: {
-            file: packageJson.main,
-            format: "cjs",
+            file: packageJson.module,
+            format: "esm",
         },
-        plugins,
+        plugins: [
+            del({
+                targets: packageJson.module,
+            }),
+            ...plugins,
+        ],
     },
     {
         input: "src/index.js",
         output: {
-            file: packageJson.module,
-            format: "esm",
+            file: packageJson.main,
+            format: "cjs",
         },
-        plugins,
-    },
+        plugins: [
+            del({
+                targets: packageJson.main,
+            }),
+            ...plugins,
+        ],
+    }
 ];

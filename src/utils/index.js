@@ -2,7 +2,7 @@ import { defaultConfig, requiredArgs, horizontal, vertical } from '../const/inde
 
 //次数节流
 export const frequencyThrottle = (num) => {
-    // [true,false,false]
+    // [true,false,false...]
     let arr = new Array(num).fill(true).fill(false, 1);
     let index = 0;
     return function () {
@@ -12,7 +12,7 @@ export const frequencyThrottle = (num) => {
 export const wLog = function (...arg) {
     return console.warn(...arg);
 };
-
+// 插入样式表
 export const insertUserSelectNoneStyleSheet = () => {
     let styleElement = document.createElement('style');
     styleElement.type = 'text/css';
@@ -25,7 +25,7 @@ export const openOrforbidUserSelect = (flag) => {
     const addOrRemove = flag ? 'add' : 'remove';
     document.body.classList[addOrRemove]('__user-select-none');
 };
-
+//padding-left 转 paddingLeft
 export const toCamelCase = (str) => {
     return str.replace(/-([a-z])/g, function (match, letter) {
         return letter.toUpperCase();
@@ -35,7 +35,7 @@ export const utilSetCssProperty = (el, key, val) => {
     el.style.setProperty(key, val + 'px');
 };
 
-
+//获取元素的computedStyle
 export const computedStyleCssValue = (el, cssProperty) => {
     return getComputedStyle(el)?.[toCamelCase(cssProperty)]?.slice(0, -2) ?? 0;
 };

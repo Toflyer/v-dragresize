@@ -15,7 +15,7 @@ export const defaultConfig = {
     // 非必填写
     min: Number.NEGATIVE_INFINITY, // min和max限制 针对当前拖动的边 + cascadeElCssList同时生效
     max: Number.POSITIVE_INFINITY,
-    cascadeElCssList: [], // 级联属性 [{cssSelector,setCssProperty,follow }] el,activeCssPropertyValue会在为代码运行后添加,无需传递
+    cascadeElCssList: [], // 级联属性 [{cssSelector,setCssProperty,follow }] el会在为代码运行后添加,无需传递
     dragAreaSize: '5px', //热区大小，默认5px
     eventPropagation: false, //  默认不冒泡/不捕获
     mouseMoveContentCssSelector: '', //鼠标移动触发监听的区域，默认为全局
@@ -27,12 +27,11 @@ export const defaultConfig = {
     log: false, // 默认不打日志
 
 
-    // 目前所有的css单位都支持，只不过会使用px进行拖动计算
+    // 目前所有的css单位都支持，只不过会替换px进行拖动计算
     // 运算时添加的属性
     // rootEl 指令所在的el
     // oldElCssPropertyValue
     // mouseMoveContentEl
     // dragLineEl
-    // activeCssPropertyValue:
     // throttleFn 节流器fn
 };

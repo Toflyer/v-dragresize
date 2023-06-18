@@ -76,32 +76,10 @@ const handleSetProperty = (moveOffset, item) => {
     // 处理拖动回调
     item.resizeHandle &&
         getType(item.resizeHandle) === 'Function' &&
-        item.resizeHandle(computedMoveOffset);
+        item.resizeHandle(computedMoveOffset,item);
 };
 
-// 鼠标移动事件
-const handleMouseMove = function (event, item, oldX, oldY, isMouseDown) {
-    if (item.throttleFn && !item.throttleFn()) {
-        item.log && wLog('-------节流--------',);
-        return;
-    }
-    item.log && wLog('%c-------mouseMoveSetting--------', 'font-weight: bold;  color:#ef11ff;');
-    !item.eventPropagation && event.stopPropagation();
-    if (!isMouseDown) return;
-    // 获取鼠标移动的距离
-    let moveY = event.clientY - oldY;
-    let moveX = event.clientX - oldX;
-    //水平方向移动
-    if (horizontal.includes(item.dragBorder)) {
-        item.log && wLog(`鼠标水平方向移动:${moveX}px`);
-        handleSetProperty(moveX, item);
-    }
-    //垂直方向移动
-    if (vertical.includes(item.dragBorder)) {
-        item.log && wLog(`鼠标垂直方向移动:${moveY}px`);
-        handleSetProperty(moveY, item);
-    }
-};
+
 const memoryPositionInLocalStorage = function (item) {
     localStorage.setItem(item.memoryPositionKey, getMemoryPositionString(item));
     item.log && wLog('已经记录拖动位置到localStorage，记录信息:', localStorage.getItem(item.memoryPositionKey));
@@ -123,6 +101,30 @@ const setMemoryPosition = function (item) {
     } catch (e) {
         console.warn('记忆位置回显失败');
         localStorage.setItem('____v-dragResizeErrorRecord', e);
+    }
+};
+
+// 鼠标移动事件
+const handleMouseMove = function (event, item, oldX, oldY, isMouseDown) {
+    if (!isMouseDown) return;
+    if (item.throttleFn && !item.throttleFn()) {
+        item.log && wLog('-------节流--------',);
+        return;
+    }
+    item.log && wLog('%c-------mouseMoveSetting--------', 'font-weight: bold;  color:#ef11ff;');
+    !item.eventPropagation && event.stopPropagation();
+    // 获取鼠标移动的距离
+    let moveY = event.clientY - oldY;
+    let moveX = event.clientX - oldX;
+    //水平方向移动
+    if (horizontal.includes(item.dragBorder)) {
+        item.log && wLog(`鼠标水平方向移动:${moveX}px`);
+        handleSetProperty(moveX, item);
+    }
+    //垂直方向移动
+    if (vertical.includes(item.dragBorder)) {
+        item.log && wLog(`鼠标垂直方向移动:${moveY}px`);
+        handleSetProperty(moveY, item);
     }
 };
 
