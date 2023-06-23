@@ -22,7 +22,7 @@ export const defaultConfig = {
     customDragLineStyle: {}, // 覆盖拖拽线的原有样式
     resizeHandle: '', // '' || function  // 
     dragDoneHandle: '', // '' || function  //
-    frequencyThrottleNum: 2, // 0为不节流,默认2,mouseMove触发每隔3次执行一次, 1: 50% 2:66% <16>  3:75% <9>
+    frequencyThrottleNum: 2, // 0为不节流,默认2,mouseMove触发每隔2次执行一次
     memoryPositionKey: '', // 是否记录位置信息，如果记录传入一个key，放入localStorage中
     log: false, // 默认不打日志
 

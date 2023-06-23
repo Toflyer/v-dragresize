@@ -1,6 +1,5 @@
 # v-dragresize
 
-In Vue, the v-dragresize instruction will help you conveniently drag the edges of Doms to change the size of elements, while also supporting the optional linkage of CSS attributes of other Doms while changing them simultaneously<br><br>
 在Vue中，v-dragresize指令会帮助您，便捷的拖动Dom的边来改变元素的大小，同时支持可选联动其他Dom的css属性同时改变
 
 ## 写在最前
@@ -10,7 +9,7 @@ In Vue, the v-dragresize instruction will help you conveniently drag the edges o
 
 ## 目录
 
-- [下载](#下载)
+- [下载](#下载)<br>
 - [使用](#使用)
 - [最简单的使用](#最简单的使用)
 - [其他配置项](#其他配置项)
@@ -27,7 +26,7 @@ In Vue, the v-dragresize instruction will help you conveniently drag the edges o
 - [事件](#事件)
     - [resizeHandle](#resizehandle)
     - [dragDoneHandle](#dragdonehandle)
-
+- [为何拖动没有生效？](#为何拖动没有生效？)
 
 ## 下载
 
@@ -223,8 +222,8 @@ mouseMoveContentCssSelector一个选择器，内部依旧使用document.querySel
 通常我们的节流都是用时间为单位，不断触发，但是N毫秒内只执行一次，但在这个交互上可能不太适用，所以我们用次数作为节流单位
 
 
-目前插件内部内置frequencyThrottleNum为3
-意为：当mouseMove事件触发三次，我们才执行一次计算并且调整您传入配置的所有css属性
+目前插件内部内置frequencyThrottleNum为2
+意为：当mouseMove事件触发两次，我们才执行一次计算并且调整您传入配置的所有css属性
 当frequencyThrottleNum为0时，意为不节流
 
 frequencyThrottleNum越小交互越流畅但是性能消耗会随之增加
@@ -236,7 +235,7 @@ frequencyThrottleNum越小交互越流畅但是性能消耗会随之增加
         {
           dragBorder: "top",
           setCssProperty: "padding-top",
-          frequencyThrottleNum：3，
+          frequencyThrottleNum：2， //不节流
         },
       ];
     },
@@ -324,4 +323,27 @@ frequencyThrottleNum越小交互越流畅但是性能消耗会随之增加
   },
 
 ```
+### 为何拖动没有生效？
 
+目前v-dragresize支持拖拽的元素为：可以使用append添加子元素的元素，例如div。<br>
+但是像textarea，input这类元素,v-dragresize无法直接作用于他们，但是您可以将input作为div的子元素，设定input的width和height均为100%，然后令v-dragresize作用于父级div即可
+
+
+```html
+  <div class="playground" v-dragresize="dragConfig">
+    <input type="text" />
+  </div>
+
+```
+
+
+
+
+
+
+
+
+
+npm:https://www.npmjs.com/package/v-dragresize<br>
+
+github:https://github.com/Toflyer/v-dragresize

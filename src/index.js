@@ -192,7 +192,6 @@ function install(Vue, options = {}) {
                     oldY = mouseEvent.clientY;
                     oldX = mouseEvent.clientX;
                     let mousemoveContext = item.mouseMoveContentEl ?? window;
-                    // 多次注册，只会触发一次
                     mousemoveContext.addEventListener(
                         'mousemove',
                         e => {
