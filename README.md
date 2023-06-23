@@ -26,7 +26,7 @@
 - [事件](#事件)
     - [resizeHandle](#resizehandle)
     - [dragDoneHandle](#dragdonehandle)
-- [为何拖动没有生效？](#为何拖动没有生效？)
+- [为何拖动没有生效？](#为何拖动没有生效)
 
 ## 下载
 

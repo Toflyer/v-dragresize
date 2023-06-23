@@ -1,6 +1,6 @@
 {
   "name": "v-dragresize",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "In vue, you can easily drag and change the layout of elements",
   "main": "dist/cjs/index.js",
   "module": "dist/em/index.js",
